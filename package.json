@@ -1,0 +1,43 @@
+{
+  "name": "web-socket-example",
+  "version": "0.0.1",
+  "description": "An example websocket project",
+  "main": "server/server.js",
+  "scripts": {
+    "build": "npx tsc",
+    "server": "node ./dist/server/server",
+    "client": "node ./dist/client/client",
+    "test": "mocha dist/tests/**.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Reesy/web-socket-example.git"
+  },
+  "keywords": [
+    "Typescript",
+    "TDD",
+    "supertest",
+    "backend",
+    "sockets"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Reesy/web-socket-example/issues"
+  },
+  "homepage": "https://github.com/Reesy/web-socket-example#readme",
+  "dependencies": {
+    "@types/node": "^16.6.2",
+    "@types/ws": "^7.4.7",
+    "typescript": "^4.3.5",
+    "ws": "^7.5.5"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.21",
+    "@types/mocha": "^9.0.0",
+    "@types/supertest": "^2.0.11",
+    "chai": "^4.3.4",
+    "mocha": "^9.0.3",
+    "supertest": "^6.1.6"
+  }
+}
