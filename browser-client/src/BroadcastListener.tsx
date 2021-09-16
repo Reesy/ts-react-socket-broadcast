@@ -3,7 +3,14 @@ import './BroadcastListener.css';
 
 class BroadcastListener extends React.Component<any, any> 
 {
-    websocket: WebSocket = new WebSocket('ws://localhost:7070');
+   websocket: WebSocket = new WebSocket('ws://192.168.45.163:7070');
+
+
+   state  = 
+    {
+        testBool: false,
+        connectedPeersNumber: 0
+    };
 
     componentDidMount()
     {
@@ -17,18 +24,22 @@ class BroadcastListener extends React.Component<any, any>
         {
             console.log('Websocket closed');
         };
+
+        this.websocket.onmessage = (event: any) =>
+        {
+            console.log('This was called');
+            // this.setState((state: any) => {
+            //     console.log('Attempting to test state, but I think the screen renderes first');
+            //     state.testBool = true;
+            // });
+        };
+
     };
    
 
     constructor(props: any) {
         super(props);
-
-
-        this.sendMessage = this.sendMessage.bind(this);
-        this.state = {
-            testBool: false
-        };
-     
+        this.sendMessage = this.sendMessage.bind(this);   
     };
 
     render() {
@@ -37,32 +48,18 @@ class BroadcastListener extends React.Component<any, any>
         <p>
             <button
                 className="Main-button"
-                onClick={this.sendMessage}  
-            >
+                onClick={this.sendMessage}>
                 Click here for something to happen: 
             </button>
-
-            <div>
-                {this.state.testBool ? <p>Test bool is true</p> : <p>Test bool is false</p>}
-            </div>
         </p>
         </div>
       );
     }
     
-
     sendMessage()
     {   
-        //Q: How do modify the state of the component?
-        //A: We can use the setState() method to change the state of the component.
-        //   This method takes a new state object as an argument.
-        //   The state object is a map of key-value pairs.
-
-        this.setState({
-            testBool: !this.state.testBool
-        });
-  
-        this.websocket.send(this.state.testBool);
+        this.websocket.send("Update");
+        //broadcast a message to all the connected clients    
     };
 
 };
