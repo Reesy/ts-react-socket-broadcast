@@ -10,7 +10,7 @@ Build:
 ``` npm run build ```
 
 Start server:
-``` npm run start ```
+``` npm run server ```
 
 Start client:
 ``` npm run client ```
